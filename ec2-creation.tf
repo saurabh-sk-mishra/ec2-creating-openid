@@ -1,11 +1,17 @@
 name: Launch EC2 Instance
 
 on:
-  workflow_dispatch:  # allows manual triggering
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:  # still allows manual runs
 
 permissions:
-  id-token: write       # required for OIDC
-  contents: read        # needed for repo access
+  id-token: write
+  contents: read
 
 jobs:
   launch-ec2:
